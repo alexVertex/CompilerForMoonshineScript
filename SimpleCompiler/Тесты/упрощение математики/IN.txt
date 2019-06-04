@@ -1,0 +1,7 @@
+WRITE 2 + 2 * 2
+WRITE (4 + 10) * (7 + 3)
+WRITE 15 + 5 >= 17
+WRITE 15 / 5 <> 3
+WRITE 25 < 5 AND 172 > 222 OR 1  
+WRITE 10 * 2 + 20 * 4
+WRITE 90 - (13 + 7) 

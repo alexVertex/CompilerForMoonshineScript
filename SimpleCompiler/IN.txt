@@ -1,0 +1,22 @@
+METHOD fib(INTEGER red) INTEGER BEGIN
+	INTEGER one
+	INTEGER two
+	IF (red < 1) BEGIN
+		RETURN 0
+	END
+	IF (red == 1) BEGIN
+		RETURN 1
+	END
+	one = red - 1
+	two = red - 2 
+	RETURN fib(one) + fib(two)
+END
+INTEGER a
+WRITE "ENTER INTEGER"
+READ a
+INTEGER b
+b = 0
+WHILE (b < a) BEGIN
+	WRITE fib(b)
+	b = b + 1
+END

@@ -1,0 +1,21 @@
+METHOD fib(INTEGER red) INTEGER BEGIN
+	IF (red < 1) BEGIN
+		RETURN 0
+	END
+	IF (red == 1) BEGIN
+		RETURN 1
+	END
+	INTEGER one
+	one = red - 1
+	INTEGER two
+	two = red - 2
+	one = fib (one) + fib (two)
+	RETURN one
+END
+INTEGER a
+a = 0
+WHILE (a < 10) BEGIN
+	a = fib (10)
+	WRITE a
+	a = a + 1
+END

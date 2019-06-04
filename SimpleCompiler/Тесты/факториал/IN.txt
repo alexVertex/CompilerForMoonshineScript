@@ -1,0 +1,14 @@
+METHOD factorial (INTEGER workwith) INTEGER BEGIN
+	INTEGER nextstep
+	IF(workwith > 1) BEGIN	
+		nextstep = workwith - 1
+		nextstep = factorial (nextstep) * workwith
+	END ELSE BEGIN
+		nextstep = 1
+	END
+RETURN nextstep
+END
+INTEGER first
+READ first
+first = factorial (first)
+WRITE first

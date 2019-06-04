@@ -1,0 +1,7 @@
+METHOD decrement (INTEGER decc) INTEGER BEGIN
+	decc = decc - 1
+	RETURN decc
+END
+INTEGER verdana
+verdana = decrement (10)
+WRITE verdana

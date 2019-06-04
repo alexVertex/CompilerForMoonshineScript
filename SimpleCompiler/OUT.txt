@@ -1,0 +1,77 @@
+.386
+.model flat, stdcall
+option casemap :none
+include \masm32\include\windows.inc
+include \masm32\include\masm32.inc
+include \masm32\include\msvcrt.inc
+include \masm32\macros\macros.asm
+includelib \masm32\lib\masm32.lib
+includelib \masm32\lib\msvcrt.lib
+include \masm32\include\kernel32.inc
+includelib \masm32\lib\kernel32.lib
+.data
+tpt db      '%d',0dh,0ah,0
+id2 dword  0
+_ENTER_INTEGER_ db   "ENTER INTEGER",0dh, 0ah , 0
+id3 dword  0
+.data?
+ READ dword 100 dup(?)
+.code
+method0 proc param0 :DWORD
+LOCAL id0: dword
+LOCAL id1: dword
+mov eax, param0
+mov ebx, 1
+cmp eax, ebx 
+jge L2
+mov eax, 0
+ret
+L2:
+mov eax, param0
+mov ebx, 1
+cmp eax, ebx 
+jne L3
+mov eax, 1
+ret
+L3:
+mov eax, param0
+mov ebx, 1
+sub eax, ebx
+mov id0, eax
+mov eax, param0
+mov ebx, 2
+sub eax, ebx
+mov id1, eax
+invoke method0, id0
+mov ecx, eax
+push ecx
+invoke method0, id1
+pop ecx
+mov ebx, ecx
+add eax, ebx
+ret
+method0 endp
+start:
+invoke  crt_printf, ADDR _ENTER_INTEGER_
+invoke StdIn, addr READ, 100
+invoke StripLF, addr READ
+invoke atodw, addr READ
+mov id2, eax
+mov eax, 0
+mov id3, eax
+L4:
+mov eax, id3
+mov ebx, id2
+cmp eax, ebx 
+jge L5
+invoke method0, id3
+invoke  crt_printf, ADDR tpt, eax
+mov eax, id3
+mov ebx, 1
+add eax, ebx
+mov id3, eax
+jmp L4
+L5:
+invoke  crt__getch
+invoke  crt_exit,0
+end start
